@@ -1,0 +1,64 @@
+﻿@model PI4SAE.Models.Activities
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Activities</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.idActivity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idActivity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nameActivity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nameActivity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hourActivity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hourActivity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.teacher)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.teacher)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.weekDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.weekDay)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.typeActivity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.typeActivity)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
