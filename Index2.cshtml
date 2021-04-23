@@ -1,0 +1,24 @@
+﻿@model IEnumerable<PI4SAE.Models.User>
+
+<div>
+    <ul class="nav navbar-nav navbar-right">
+        <h1>
+            Welcome to our application !
+        </h1>
+    </ul>
+</div>
+
+
+
+<p>
+    @Html.ActionLink("All Users Zone", "Index", "User")
+</p>
+<p>
+    @Html.ActionLink("Parents Zone", "IndexParent", "Parent")
+</p>
+<p>
+    @Html.ActionLink("kinderGartenAdmin Zone", "IndexKinderGartenAdmin", "KinderGartenAdmin")
+</p>
+<p>
+    @Html.ActionLink("Kids Zone", "IndexKid", "Kid")
+</p>
