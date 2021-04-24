@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PI4SAE", "PI4SAE\PI4SAE.csproj", "{718C32B0-91E4-4D3B-8706-E5D513A8ABE9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PI4SAE", "PI4SAE\PI4SAE.csproj", "{D5AC875E-00D0-44E7-9FFA-D454D1476B96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{718C32B0-91E4-4D3B-8706-E5D513A8ABE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{718C32B0-91E4-4D3B-8706-E5D513A8ABE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{718C32B0-91E4-4D3B-8706-E5D513A8ABE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{718C32B0-91E4-4D3B-8706-E5D513A8ABE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5AC875E-00D0-44E7-9FFA-D454D1476B96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5AC875E-00D0-44E7-9FFA-D454D1476B96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5AC875E-00D0-44E7-9FFA-D454D1476B96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5AC875E-00D0-44E7-9FFA-D454D1476B96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C5E4A802-C253-4364-98BC-516777FCFE1D}
+		SolutionGuid = {E70EB4CB-F07E-4241-BAC7-BCBDFE09FFE0}
 	EndGlobalSection
 EndGlobal
