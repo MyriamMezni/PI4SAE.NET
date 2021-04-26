@@ -1,8 +1,7 @@
-﻿@model IEnumerable<PI4SAE.Models.Reclamation>
+﻿@model IEnumerable<Webtuto.Models.Category_Products>
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
@@ -13,25 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.idParent)
+            @Html.DisplayNameFor(model => model.idCategory)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.idReclamation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.subject)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.typeReclamation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.statue)
+            @Html.DisplayNameFor(model => model.nameCategory)
         </th>
         <th></th>
     </tr>
@@ -39,30 +23,15 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.idParent)
+            @Html.DisplayFor(modelItem => item.idCategory)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.idReclamation)
+            @Html.DisplayFor(modelItem => item.nameCategory)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.subject)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.typeReclamation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.statue)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.idReclamation  }) |
-            @Html.ActionLink("Details", "Details", new {  id=item.idReclamation }) |
-            @Html.ActionLink("Delete", "Delete", new {  id=item.idReclamation  })
+            @Html.ActionLink("Edit", "Edit", new {  id= item.idCategory }) |
+            @Html.ActionLink("Details", "Details", new {  id= item.idCategory }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.idCategory  })
         </td>
     </tr>
 }

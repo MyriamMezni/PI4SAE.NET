@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Webtuto.Models.Products>
+
+@{
+    ViewBag.Title = "LowestPrice";
+}
+
+<h2>LowestPrice</h2>
+
+<p>
+    @Html.ActionLink("Back", "/ListProducts")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.couleur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prix)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.couleur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.image)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prix)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantity)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.idProd }) |
+            @Html.ActionLink("Details", "Details", new { id = item.idProd }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.idProd })|
+            @Html.ActionLink("Add To cart", "AddToCart", new { id = item.idProd })|
+            @Html.ActionLink("Offer", "AddOffer", new { id = item.idProd })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,46 +1,37 @@
-﻿@model PI4SAE.Models.Reclamation
+﻿@model Webtuto.Models.Products
 
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Details</h2>
 
 <div>
-    <h4>Reclamation</h4>
+    <h4>Products</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.idParent)
+            @Html.DisplayNameFor(model => model.idProd)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.idParent)
+            @Html.DisplayFor(model => model.idProd)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.idReclamation)
+            @Html.DisplayNameFor(model => model.quantite)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.idReclamation)
+            @Html.DisplayFor(model => model.quantite)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.date)
+            @Html.DisplayNameFor(model => model.couleur)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.subject)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.subject)
+            @Html.DisplayFor(model => model.couleur)
         </dd>
 
         <dt>
@@ -52,19 +43,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.typeReclamation)
+            @Html.DisplayNameFor(model => model.image)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.typeReclamation)
+            @Html.DisplayFor(model => model.image)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.statue)
+            @Html.DisplayNameFor(model => model.nomProd)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.statue)
+            @Html.DisplayFor(model => model.nomProd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prix)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prix)
         </dd>
 
     </dl>
