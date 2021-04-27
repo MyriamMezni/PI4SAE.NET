@@ -13,7 +13,7 @@ namespace PI4SAE.Controllers
 {
     public class UserController : Controller
     {
-       // string Baseurl = "http://localhost:8082/";
+        // string Baseurl = "http://localhost:8082/";
         // GET: User
         /* public ActionResult Index()
          {
@@ -31,6 +31,26 @@ namespace PI4SAE.Controllers
              }
              return View();
          }*/
+
+        public ActionResult IndexMaps()
+        {
+
+
+            HttpClient Client = new HttpClient();
+            Client.BaseAddress = new Uri("http://localhost:8082");
+            Client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = Client.GetAsync("SpringMVC/servlet/retrieve-all-users").Result;
+            IEnumerable<User> result;
+            if (response.IsSuccessStatusCode)
+            {
+
+                result = response.Content.ReadAsAsync<IEnumerable<User>>().Result;
+            }
+            else
+            { result = null; }
+            return View(result);
+        }
+
 
         public async Task<ActionResult> Index()
         {

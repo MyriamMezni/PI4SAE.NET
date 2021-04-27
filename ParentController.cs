@@ -13,37 +13,162 @@ namespace PI4SAE.Controllers
 {
     public class ParentController : Controller
     {
-        // GET: Parent
-        public async Task<ActionResult> IndexParent()
+
+
+
+        public ActionResult IndexMail()
         {
 
-            string Baseurl = "http://localhost:8082/";
-            List<Parent> getUser = new List<Parent>();
 
-            using (var client = new HttpClient())
+            HttpClient Client = new HttpClient();
+            Client.BaseAddress = new Uri("http://localhost:8082");
+            Client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = Client.GetAsync("SpringMVC/servlet/sendSimpleEmail").Result;
+            IEnumerable<Parent> result;
+            if (response.IsSuccessStatusCode)
             {
-                //Passing service base url  
-                client.BaseAddress = new Uri(Baseurl);
 
-                client.DefaultRequestHeaders.Clear();
-                //Define request data format  
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                //Sending request to find web api REST service resource GetAllEmployees using HttpClient  
-                HttpResponseMessage Res = await client.GetAsync("SpringMVC/servlet/GetUserSortedByTypeParent");
-                if (Res.IsSuccessStatusCode)
-                {
-                    //Storing the response details recieved from web api   
-                    var UserResponse = Res.Content.ReadAsStringAsync().Result;
-
-                    //Deserializing the response recieved from web api and storing into the Employee list  
-                    getUser = JsonConvert.DeserializeObject<List<Parent>>(UserResponse);
-
-                }
-                //returning the employee list to view  
-                return View(getUser);
+                result = response.Content.ReadAsAsync<IEnumerable<Parent>>().Result;
             }
+            else
+            { result = null; }
+            return View(result);
         }
+        // GET: Parent
+        /*    public async Task<ActionResult> IndexParent()
+            {
+
+                string Baseurl = "http://localhost:8082/";
+                List<Parent> getUser = new List<Parent>();
+
+                using (var client = new HttpClient())
+                {
+                    //Passing service base url  
+                    client.BaseAddress = new Uri(Baseurl);
+
+                    client.DefaultRequestHeaders.Clear();
+                    //Define request data format  
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    //Sending request to find web api REST service resource GetAllEmployees using HttpClient  
+                    HttpResponseMessage Res = await client.GetAsync("SpringMVC/servlet/GetUserSortedByTypeParent");
+                    if (Res.IsSuccessStatusCode)
+                    {
+                        //Storing the response details recieved from web api   
+                        var UserResponse = Res.Content.ReadAsStringAsync().Result;
+
+                        //Deserializing the response recieved from web api and storing into the Employee list  
+                        getUser = JsonConvert.DeserializeObject<List<Parent>>(UserResponse);
+
+                    }
+                    //returning the employee list to view  
+                    return View(getUser);
+                }
+            }*/
+        //Get Parent
+        public ActionResult IndexParent()
+        {
+
+
+            HttpClient Client = new HttpClient();
+            Client.BaseAddress = new Uri("http://localhost:8082");
+            Client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = Client.GetAsync("SpringMVC/servlet/GetUserSortedByTypeParent").Result;
+            IEnumerable<Parent> result;
+            if (response.IsSuccessStatusCode)
+            {
+
+                result = response.Content.ReadAsAsync<IEnumerable<Parent>>().Result;
+            }
+            else
+            { result = null; }
+            return View(result);
+        }
+
+
+        [HttpPost]
+        public ActionResult IndexParent(string filtre)
+        {
+
+
+            HttpClient Client = new HttpClient();
+            Client.BaseAddress = new Uri("http://localhost:8082");
+            Client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = Client.GetAsync("SpringMVC/servlet/GetUserSortedByTypeParent").Result;
+            IEnumerable<Parent> result;
+            IEnumerable<Parent> result2;
+
+            if (response.IsSuccessStatusCode)
+            {
+                result = response.Content.ReadAsAsync<IEnumerable<Parent>>().Result;
+
+                if (!String.IsNullOrEmpty(filtre))
+                {
+                    HttpResponseMessage response2 = Client.GetAsync("SpringMVC/servlet/FindParentByNameParent/" + filtre.ToString()).Result;
+                    result = response2.Content.ReadAsAsync<IEnumerable<Parent>>().Result;
+
+                    // list = list.Where(p => p.Name.ToString().Equals(filtre)).ToList();
+                }
+            }
+            else
+            { result = null; }
+
+            return View(result);
+        }
+
+
+
+        public ActionResult IndexParent2()
+        {
+
+
+            HttpClient Client = new HttpClient();
+            Client.BaseAddress = new Uri("http://localhost:8082");
+            Client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = Client.GetAsync("SpringMVC/servlet/GetUserSortedByTypeParent").Result;
+            IEnumerable<Parent> result;
+            if (response.IsSuccessStatusCode)
+            {
+
+                result = response.Content.ReadAsAsync<IEnumerable<Parent>>().Result;
+            }
+            else
+            { result = null; }
+            return View(result);
+        }
+
+
+
+        [HttpPost]
+        public ActionResult IndexParent2(string filtre)
+        {
+
+
+            HttpClient Client = new HttpClient();
+            Client.BaseAddress = new Uri("http://localhost:8082");
+            Client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = Client.GetAsync("SpringMVC/servlet/GetUserSortedByTypeParent").Result;
+            IEnumerable<Parent> result;
+            IEnumerable<Parent> result2;
+
+            if (response.IsSuccessStatusCode)
+            {
+                result = response.Content.ReadAsAsync<IEnumerable<Parent>>().Result;
+
+                if (!String.IsNullOrEmpty(filtre))
+                {
+                    HttpResponseMessage response2 = Client.GetAsync("SpringMVC/servlet/FindParentByNameParent/" + filtre.ToString()).Result;
+                    result = response2.Content.ReadAsAsync<IEnumerable<Parent>>().Result;
+
+                    // list = list.Where(p => p.Name.ToString().Equals(filtre)).ToList();
+                }
+            }
+            else
+            { result = null; }
+
+            return View(result);
+        }
+
 
         public async Task<ActionResult> Index2(Parent p)
         {
@@ -294,8 +419,6 @@ namespace PI4SAE.Controllers
 
 
 
-
-    
 
 
 

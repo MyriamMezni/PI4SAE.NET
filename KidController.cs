@@ -14,35 +14,133 @@ namespace PI4SAE.Controllers
     public class KidController : Controller
     {
         // GET: Kid
-        public async Task<ActionResult> IndexKid()
+        /*   public async Task<ActionResult> IndexKid()
+           {
+
+               string Baseurl = "http://localhost:8082/";
+               List<Kid> getUser = new List<Kid>();
+
+               using (var client = new HttpClient())
+               {
+                   //Passing service base url  
+                   client.BaseAddress = new Uri(Baseurl);
+
+                   client.DefaultRequestHeaders.Clear();
+                   //Define request data format  
+                   client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                   //Sending request to find web api REST service resource GetAllEmployees using HttpClient  
+                   HttpResponseMessage Res = await client.GetAsync("SpringMVC/servlet/FindKidSortedByNameKid");
+                   if (Res.IsSuccessStatusCode)
+                   {
+                       //Storing the response details recieved from web api   
+                       var UserResponse = Res.Content.ReadAsStringAsync().Result;
+
+                       //Deserializing the response recieved from web api and storing into the Employee list  
+                       getUser = JsonConvert.DeserializeObject<List<Kid>>(UserResponse);
+
+                   }
+                   //returning the employee list to view  
+                   return View(getUser);
+               }
+           }*/
+        //GET Kid
+        public ActionResult IndexKid()
         {
 
-            string Baseurl = "http://localhost:8082/";
-            List<Kid> getUser = new List<Kid>();
 
-            using (var client = new HttpClient())
+            HttpClient Client = new HttpClient();
+            Client.BaseAddress = new Uri("http://localhost:8082");
+            Client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = Client.GetAsync("SpringMVC/servlet/GetKid").Result;
+            IEnumerable<Kid> result;
+            if (response.IsSuccessStatusCode)
             {
-                //Passing service base url  
-                client.BaseAddress = new Uri(Baseurl);
 
-                client.DefaultRequestHeaders.Clear();
-                //Define request data format  
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                //Sending request to find web api REST service resource GetAllEmployees using HttpClient  
-                HttpResponseMessage Res = await client.GetAsync("SpringMVC/servlet/FindKidSortedByNameKid");
-                if (Res.IsSuccessStatusCode)
-                {
-                    //Storing the response details recieved from web api   
-                    var UserResponse = Res.Content.ReadAsStringAsync().Result;
-
-                    //Deserializing the response recieved from web api and storing into the Employee list  
-                    getUser = JsonConvert.DeserializeObject<List<Kid>>(UserResponse);
-
-                }
-                //returning the employee list to view  
-                return View(getUser);
+                result = response.Content.ReadAsAsync<IEnumerable<Kid>>().Result;
             }
+            else
+            { result = null; }
+            return View(result);
+        }
+
+        public ActionResult IndexKid2()
+        {
+
+
+            HttpClient Client = new HttpClient();
+            Client.BaseAddress = new Uri("http://localhost:8082");
+            Client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = Client.GetAsync("SpringMVC/servlet/FindKidSortedByNameKid").Result;
+            IEnumerable<Kid> result;
+            if (response.IsSuccessStatusCode)
+            {
+
+                result = response.Content.ReadAsAsync<IEnumerable<Kid>>().Result;
+            }
+            else
+            { result = null; }
+            return View(result);
+        }
+
+        [HttpPost]
+        public ActionResult IndexKid2(string filtre)
+        {
+
+
+            HttpClient Client = new HttpClient();
+            Client.BaseAddress = new Uri("http://localhost:8082");
+            Client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = Client.GetAsync("SpringMVC/servlet/GetKid").Result;
+            IEnumerable<Kid> result;
+            IEnumerable<Kid> result2;
+
+            if (response.IsSuccessStatusCode)
+            {
+                result = response.Content.ReadAsAsync<IEnumerable<Kid>>().Result;
+
+                if (!String.IsNullOrEmpty(filtre))
+                {
+                    HttpResponseMessage response2 = Client.GetAsync("SpringMVC/servlet/FindKidByNameKid/" + filtre.ToString()).Result;
+                    result = response2.Content.ReadAsAsync<IEnumerable<Kid>>().Result;
+
+                    // list = list.Where(p => p.Name.ToString().Equals(filtre)).ToList();
+                }
+            }
+            else
+            { result = null; }
+
+            return View(result);
+        }
+
+        [HttpPost]
+        public ActionResult IndexKid(string filtre)
+        {
+
+
+            HttpClient Client = new HttpClient();
+            Client.BaseAddress = new Uri("http://localhost:8082");
+            Client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = Client.GetAsync("SpringMVC/servlet/GetKid").Result;
+            IEnumerable<Kid> result;
+            IEnumerable<Kid> result2;
+
+            if (response.IsSuccessStatusCode)
+            {
+                result = response.Content.ReadAsAsync<IEnumerable<Kid>>().Result;
+
+                if (!String.IsNullOrEmpty(filtre))
+                {
+                    HttpResponseMessage response2 = Client.GetAsync("SpringMVC/servlet/FindKidByNameKid/" + filtre.ToString()).Result;
+                    result = response2.Content.ReadAsAsync<IEnumerable<Kid>>().Result;
+
+                    // list = list.Where(p => p.Name.ToString().Equals(filtre)).ToList();
+                }
+            }
+            else
+            { result = null; }
+
+            return View(result);
         }
 
         // GET: Kid/Details/5

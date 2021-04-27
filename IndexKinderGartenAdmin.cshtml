@@ -1,0 +1,76 @@
+﻿@model IEnumerable<PI4SAE.Models.KinderGartenAdmin>
+@{
+    ViewBag.Title = "IndexKinderGartenAdmin";
+    Layout = "~/Views/Shared/EspaceAdmin.cshtml";
+
+}
+<div style="width:800px; margin:0 auto;">
+
+    @using (Html.BeginForm())
+    {<table>
+            <tr>
+                <td>
+                    <div>
+                        Search: @Html.TextBox("filtre")
+                    </div>
+                </td>
+                <td> <input class="btn btn-primary btn-block border-0 py-3" type="submit" value="Search" id="submit" /> </td>
+            </tr>
+        </table>}
+
+    <p class="section-title px-3">
+        <span class="px-1">
+            @Html.ActionLink("Show Liste of Parents", "IndexParent2", "Parent")
+            </span>
+    </p>
+
+    <div class="container-fluid pt-5">
+        <div class="container pb-3">
+
+
+
+            <div class="row">
+
+
+                @foreach (var item in Model)
+                {
+
+                    <div class="col-lg-4 col-md-6 pb-1">
+                        <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                            <div class="pl-4">
+                                <h4> @Html.DisplayFor(modelItem => item.name) @Html.DisplayFor(modelItem => item.lastName) </h4>
+                                <p class="m-0">
+
+
+                                    Address:   @Html.DisplayFor(modelItem => item.address) <br />
+
+                                    Email:    @Html.DisplayFor(modelItem => item.email) <br />
+
+                                    Phone Number:    @Html.DisplayFor(modelItem => item.numTel) <br />
+
+                                    Training:   @Html.DisplayFor(modelItem => item.formation) <br />
+
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.idUser }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.idUser }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.idUser })
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+    <p class="section-title px-3">
+        <span class="px-1">
+            @Html.ActionLink("Back", "Index", "Home")
+        </span>
+    </p>
+</div>

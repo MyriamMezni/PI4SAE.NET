@@ -1,0 +1,28 @@
+﻿@model IEnumerable<PI4SAE.Models.User>
+
+@{
+    ViewBag.Title = "Index4";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="width:800px; margin:0 auto;" >
+    <h2>LogIn</h2>
+    <p class="section-title px-3">
+        <span class="px-1">
+            @Html.ActionLink("LogIn As Parent", "authenticateParent", "Parent")
+        </span>
+    </p>
+    <br />
+
+    <p class="section-title px-3">
+        <span class="px-1">
+            @Html.ActionLink("LogIn As kinderGartenAdmin", "authenticateKinderGartenAdmin", "kinderGartenAdmin")
+        </span>
+    </p>
+    <br />
+    <p class="section-title px-3">
+        <span class="px-1">
+            @Html.ActionLink("Back", "Index", "Home")
+        </span>
+    </p>
+
+</div>

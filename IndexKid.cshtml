@@ -1,0 +1,92 @@
+﻿@model IEnumerable<PI4SAE.Models.Kid>
+@{
+    ViewBag.Title = "IndexKid";
+    Layout = "~/Views/Shared/EspaceAdmin.cshtml";
+}
+
+<div style="width:800px; margin:0 auto;">
+
+    @using (Html.BeginForm())
+    {<table>
+            <tr>
+                <td>
+                    <div>
+                        Search : @Html.TextBox("filtre")
+                    </div>
+                </td>
+                <td> <input class="btn btn-primary btn-block border-0 py-3" type="submit" value="Search" id="submit" /> </td>
+            </tr>
+        </table>}
+
+
+
+
+
+    <div class="container-fluid pt-5">
+        <div class="container pb-3">
+
+
+
+            <div class="row">
+
+                @foreach (var item in Model)
+                {
+
+                    <div class="col-lg-4 col-md-6 pb-1">
+                        <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                            <div class="pl-4">
+                                <h4> @Html.DisplayFor(modelItem => item.nameKid) @Html.DisplayFor(modelItem => item.lastNameKid) </h4>
+                                <p class="m-0">
+
+
+
+                                    Address:  @Html.DisplayFor(modelItem => item.addressKid) <br />
+
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.idKid }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.idKid }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.idKid }) |
+                                    @Html.ActionLink("Affecter", "Affecter", new { id = item.idKid })
+
+
+
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <p class="section-title px-3">
+        <span class="px-1">
+            @Html.ActionLink("Create New", "Create")
+        </span>
+    </p>
+    <br />
+
+
+
+    <p class="section-title px-3">
+        <span class="px-1">
+
+            @Html.ActionLink("Get List of Kids Ordred By Name", "IndexKid2", "Kid")
+        </span>
+    </p>
+    <br />
+
+    <p class="section-title px-3">
+        <span class="px-1">
+
+            @Html.ActionLink("Back", "Index2", "Parent")
+        </span>
+    </p>
+    <br />
+
+</div>
+

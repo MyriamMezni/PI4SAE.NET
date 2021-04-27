@@ -1,74 +1,72 @@
-﻿@model Webtuto.Models.Products
-
+﻿@model PI4SAE.Models.User
 @{
     ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout - Copier - Copier.cshtml";
 }
-
-<h2>Details</h2>
-
 <div>
-    <h4>Products</h4>
+    <h4>User</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.idProd)
+            @Html.DisplayNameFor(model => model.idUser)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.idProd)
+            @Html.DisplayFor(model => model.idUser)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.quantite)
+            @Html.DisplayNameFor(model => model.name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.quantite)
+            @Html.DisplayFor(model => model.name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.couleur)
+            @Html.DisplayNameFor(model => model.lastName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.couleur)
+            @Html.DisplayFor(model => model.lastName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.description)
+            @Html.DisplayNameFor(model => model.address)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.description)
+            @Html.DisplayFor(model => model.address)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.image)
+            @Html.DisplayNameFor(model => model.email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.image)
+            @Html.DisplayFor(model => model.email)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.nomProd)
+            @Html.DisplayNameFor(model => model.password)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.nomProd)
+            @Html.DisplayFor(model => model.password)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.prix)
+            @Html.DisplayNameFor(model => model.numTel)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.prix)
+            @Html.DisplayFor(model => model.numTel)
         </dd>
 
     </dl>
+
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idUser }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

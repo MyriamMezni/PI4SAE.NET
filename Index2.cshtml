@@ -1,24 +1,30 @@
-﻿@model IEnumerable<PI4SAE.Models.User>
+﻿@model IEnumerable<PI4SAE.Models.Parent>
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/EspaceParent.cshtml";
+}
 
-<div>
-    <ul class="nav navbar-nav navbar-right">
-        <h1>
-            Welcome to our application !
-        </h1>
-    </ul>
+
+
+<div style="width:800px; margin:0 auto;">
+    <h2>Parents Zone </h2>
+    <p class="section-title px-3">
+        <span class="px-1">
+            @Html.ActionLink("Parents Zone From Here", "IndexParent", "Parent")
+        </span>
+    </p>
+    <br />
+
+    <p class="section-title px-3">
+        <span class="px-1">
+            @Html.ActionLink("Kids Zone From Here", "IndexKid", "Kid")
+        </span>
+    </p>
+    <br />
+    <p class="section-title px-3">
+        <span class="px-1">
+            @Html.ActionLink("Back", "Index", "Home")
+        </span>
+    </p>
+
 </div>
-
-
-
-<p>
-    @Html.ActionLink("All Users Zone", "Index", "User")
-</p>
-<p>
-    @Html.ActionLink("Parents Zone", "IndexParent", "Parent")
-</p>
-<p>
-    @Html.ActionLink("kinderGartenAdmin Zone", "IndexKinderGartenAdmin", "KinderGartenAdmin")
-</p>
-<p>
-    @Html.ActionLink("Kids Zone", "IndexKid", "Kid")
-</p>

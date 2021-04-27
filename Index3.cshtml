@@ -1,24 +1,40 @@
 ﻿@model IEnumerable<PI4SAE.Models.User>
+@{
+    ViewBag.Title = "IndexKinderGartenAdmin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="width:800px; margin:0 auto;">
 
-<div>
-    <ul class="nav navbar-nav navbar-right">
-        <h1>
-            Welcome to our application !
-        </h1>
-        <h2>
-            Register !
-        </h2>
-    </ul>
+    <div>
+        <ul class="nav navbar-nav navbar-right">
+            <h1>
+                Welcome to our application !
+            </h1>
+            <h2>
+                Register !
+            </h2>
+        </ul>
+    </div>
+
+
+
+    <p class="section-title px-3">
+        <span class="px-1">
+            @Html.ActionLink("Create New Profile Parent", "Create", "Parent")
+        </span>
+    </p>
+    <br />
+
+    <p class="section-title px-3">
+        <span class="px-1">
+            @Html.ActionLink("Create New Profile kinderGartenAdmin", "Create", "kinderGartenAdmin")
+        </span>
+    </p>
+    <br />
+    <p class="section-title px-3">
+        <span class="px-1">
+            @Html.ActionLink("Back", "Index", "Home")
+        </span>
+    </p>
+    <br />
 </div>
-
-
-
-<p>
-    @Html.ActionLink("Create New Profile User", "Create", "User")
-</p>
-<p>
-    @Html.ActionLink("Create New Profile Parent", "Create", "Parent")
-</p>
-<p>
-    @Html.ActionLink("Create New Profile kinderGartenAdmin", "Create", "kinderGartenAdmin")
-</p>

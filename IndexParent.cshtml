@@ -1,0 +1,85 @@
+﻿@model IEnumerable<PI4SAE.Models.Parent>
+@{
+    ViewBag.Title = "IndexParent";
+    Layout = "~/Views/Shared/EspaceParent.cshtml";
+}
+<div style="width:800px; margin:0 auto;">
+    @using (Html.BeginForm())
+    {<table>
+            <tr>
+                <td>
+                    <div>
+                        Search for a Parent: @Html.TextBox("filtre")
+                    </div>
+                </td>
+                <td> <input class="btn btn-primary btn-block border-0 py-3" type="submit" value="Search" id="submit" /> </td>
+            </tr>
+        </table>}
+
+
+
+
+
+
+
+
+    <div class="container-fluid pt-5">
+        <div class="container pb-3">
+
+
+
+            <div class="row">
+
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-md-6 pb-1">
+                        <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                            <div class="pl-4">
+                                <h4> @Html.DisplayFor(modelItem => item.name) @Html.DisplayFor(modelItem => item.lastName) </h4>
+                                <p class="m-0">
+
+
+
+
+
+
+
+
+
+
+                                    address:  @Html.DisplayFor(modelItem => item.address)<br />
+
+                                    email :  @Html.DisplayFor(modelItem => item.email)<br />
+                                    password :@Html.DisplayFor(modelItem => item.password)<br />
+
+                                    numTel:   @Html.DisplayFor(modelItem => item.numTel)<br />
+
+                                    nbChild:   @Html.DisplayFor(modelItem => item.nbChild)<br />
+
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.idUser }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.idUser }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.idUser })|
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <p>
+        @Html.ActionLink("Back", "Index2", "Parent")
+    </p>
+    </div>
