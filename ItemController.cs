@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PI4SAE.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -11,14 +12,14 @@ namespace Webtuto.Controllers
     public class ItemController : Controller
     {
         // GET: Item
-        public ActionResult ListItem()
+        public ActionResult ListItem(User evm)
         {
             float Totale = 0;
 
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:8082/SpringMVC/servlet/");
-                var responseTask = client.GetAsync("GetMontantTotalConfirmer/1");
+                var responseTask = client.GetAsync("GetMontantTotalConfirmer/"+Session["UserConnecteId"]);
                 responseTask.Wait();
 
                 var result = responseTask.Result;
@@ -37,7 +38,7 @@ namespace Webtuto.Controllers
             {
                 client.BaseAddress = new Uri("http://localhost:8082/SpringMVC/servlet/");
                 //HTTP GET
-                var responseTask = client.GetAsync("GetAllItem/1");
+                var responseTask = client.GetAsync("GetAllItem/" + Session["UserConnecteId"]);
                 responseTask.Wait();
 
                 var result = responseTask.Result;
@@ -72,7 +73,7 @@ namespace Webtuto.Controllers
             {
                 client.BaseAddress = new Uri("http://localhost:8082/SpringMVC/servlet/");
                 //HTTP GET
-                var responseTask = client.GetAsync("GetItemPayee/1");
+                var responseTask = client.GetAsync("GetItemPayee/"+Session["UserConnecteId"]);
                 responseTask.Wait();
 
                 var result = responseTask.Result;
@@ -195,7 +196,7 @@ namespace Webtuto.Controllers
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:8082/SpringMVC/servlet/");
-                var putTask = client.PutAsJsonAsync<ItemList>("updateLigneItem/" + id.ToString() + "/" + 1 + "/" + quantity.ToString(), itemList);
+                var putTask = client.PutAsJsonAsync<ItemList>("updateLigneItem/" + id.ToString() + "/"  +Session["UserConnecteId"] + "/" + quantity.ToString(), itemList);
                 putTask.Wait();
 
                 var ressult = putTask.Result;
@@ -207,8 +208,45 @@ namespace Webtuto.Controllers
             }
         }
 
-        // GET: Item/Delete/5
-       
+
+
+
+        public ActionResult MostPopularProducts()
+        {
+
+            IEnumerable<ItemList> products = null;
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:8082/SpringMVC/servlet/");
+                //HTTP GET
+                var responseTask = client.GetAsync("GetAllMostpopularProducts");
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<IList<ItemList>>();
+                    readTask.Wait();
+
+                    products = readTask.Result;
+
+                }
+                else //web api sent error response 
+                {
+                    //log response status here..
+
+                    products = Enumerable.Empty<ItemList>();
+
+                    ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                }
+            }
+            return View(products);
+        }
+
+
+
+
 
         // POST: Item/Delete/5
         public ActionResult Delete(int id)
@@ -216,7 +254,7 @@ namespace Webtuto.Controllers
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:8082/SpringMVC/servlet/");
-                var deleteTask = client.DeleteAsync("RemoveLigneItem/" + id.ToString()+"/"+1);
+                var deleteTask = client.DeleteAsync("RemoveLigneItem/" + id.ToString()+"/"+Session["UserConnecteId"]);
 
                 var result = deleteTask.Result;
                 if (result.IsSuccessStatusCode)

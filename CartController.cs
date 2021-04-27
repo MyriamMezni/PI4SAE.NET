@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PI4SAE.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -11,7 +12,7 @@ namespace Webtuto.Controllers
     public class CartController : Controller
     {
         // GET: Cart
-        public ActionResult Cart()
+        public ActionResult Cart(User evm)
         {
             // Session["auth"] = 15;
             Cart cart = null;
@@ -19,7 +20,7 @@ namespace Webtuto.Controllers
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:8082/SpringMVC/servlet/");
-                var responseTask = client.GetAsync("GetCartByParent/1");
+                var responseTask = client.GetAsync("GetCartByParent/"+Session["UserConnecteId"].ToString());
                 responseTask.Wait();
 
                 var result = responseTask.Result;

@@ -41,7 +41,7 @@ namespace Webtuto.Controllers
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:8082/SpringMVC/servlet/");
-                var postJob = client.PostAsJsonAsync<ChargeRequest>("pay/"+1+"/"+carta.ToString()+"/"+expMonth.ToString()+"/"+expYear.ToString()+"/"+cvc ,chargeRequest);
+                var postJob = client.PostAsJsonAsync<ChargeRequest>("pay/"+Session["UserConnecteId"] + "/"+carta.ToString()+"/"+expMonth.ToString()+"/"+expYear.ToString()+"/"+cvc ,chargeRequest);
                 postJob.Wait();
 
                 var postResult = postJob.Result;
