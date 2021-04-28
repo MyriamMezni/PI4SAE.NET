@@ -1,19 +1,72 @@
-﻿@model IEnumerable<PI4SAE.Models.User>
+﻿@model IEnumerable<PI4SAE.Models.Reclamation>
 
 @{
-    ViewBag.Title = "All Users Space";
-    Layout = "~/Views/Shared/EspaceParent.cshtml";
-
+    ViewBag.Title = "Parents Complaints";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<p>
-    @Html.ActionLink("Parents Zone From Hre", "IndexParent", "User")
-</p>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Kids Zone From Here", "IndexKid", "Kid")
-</p>
+    @Html.ActionLink("Create New", "Create")
 
-<p>
-    @Html.ActionLink("Back", "Index", "Home")
 </p>
+<p>
+    @Html.ActionLink("View complaints", "Index")
+
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.idReclamation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.typeReclamation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.statue)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.idReclamation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.typeReclamation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.statue)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idReclamation }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idReclamation }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idReclamation })
+            </td>
+        </tr>
+    }
+
+</table>

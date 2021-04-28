@@ -1,72 +1,75 @@
-﻿@model PI4SAE.Models.User
+﻿@model PI4SAE.Models.Reclamation
+
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout - Copier - Copier.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<h2>Details</h2>
+
 <div>
-    <h4>User</h4>
+    <h4>Reclamation</h4>
     <hr />
     <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.idParent)
+        </dt>*@
+
+        @*<dd>
+            @Html.DisplayFor(model => model.idParent)
+        </dd>*@
+
         <dt>
-            @Html.DisplayNameFor(model => model.idUser)
+            @Html.DisplayNameFor(model => model.idReclamation)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.idUser)
+            @Html.DisplayFor(model => model.idReclamation)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.name)
+            @Html.DisplayNameFor(model => model.date)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.name)
+            @Html.DisplayFor(model => model.date)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.lastName)
+            @Html.DisplayNameFor(model => model.subject)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.lastName)
+            @Html.DisplayFor(model => model.subject)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.address)
+            @Html.DisplayNameFor(model => model.description)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.address)
+            @Html.DisplayFor(model => model.description)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.email)
+            @Html.DisplayNameFor(model => model.typeReclamation)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.email)
+            @Html.DisplayFor(model => model.typeReclamation)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.password)
+            @Html.DisplayNameFor(model => model.statue)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.numTel)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.numTel)
+            @Html.DisplayFor(model => model.statue)
         </dd>
 
     </dl>
-
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idUser }) |
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
